@@ -55,6 +55,7 @@ class A2CAgent:
     def train_model(self, state, action, reward, next_state, done):
         model_params = self.model.trainable_variables
         with tf.GradientTape() as tape:
+            print("train_mode:{}".format(state))
             policy, value = self.model(state)
             _, next_value = self.model(next_state)
             target = reward + (1 - done) * self.discount_factor * next_value[0]

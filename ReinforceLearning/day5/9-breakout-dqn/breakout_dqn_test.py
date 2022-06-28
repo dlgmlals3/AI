@@ -69,7 +69,7 @@ if __name__ == "__main__":
     # 테스트를 위한 에이전트 생성
     state_size = (84, 84, 4)
     action_size = 3
-    model_path = './save_model/model'
+    model_path = './save_model/trained/model'
     agent = DQNAgent(action_size, state_size, model_path)
 
     # 불필요한 행동을 없애주기 위한 딕셔너리 선언

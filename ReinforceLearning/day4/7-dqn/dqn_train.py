@@ -71,6 +71,8 @@ class DQNAgent:
             self.epsilon *= self.epsilon_decay
 
         mini_batch = random.sample(self.memory, self.batch_size)
+        print("dlgmlals mini_batch : {} {}".format(len(mini_batch), mini_batch))
+        #print('dlgmlals mini_batch {}'.format(mini_batch))
         states = np.array([sample[0][0] for sample in mini_batch])
         actions = np.array([sample[1] for sample in mini_batch])
         rewards = np.array([sample[2] for sample in mini_batch])
@@ -121,6 +123,7 @@ if __name__ == "__main__":
             reward = 0.1 if not done or score == 500 else -1
 
             agent.append_sample(state, action, reward, next_state, done)
+
             if len(agent.memory) >= agent.train_start:
                 agent.train_model()
 
@@ -128,8 +131,8 @@ if __name__ == "__main__":
             if done:
                 agent.update_target_model()
                 score_avg = 0.9 * score_avg + 0.1 * score if score_avg != 0 else score
-                print("episode: {:3d} | score avg: {:3.2f} | memory length: {:4d} | epsilon: {:.4f}".format(
-                      e, score_avg, len(agent.memory), agent.epsilon))
+                #print("episode: {:3d} | score avg: {:3.2f} | memory length: {:4d} | epsilon: {:.4f}".format(
+                #      e, score_avg, len(agent.memory), agent.epsilon))
                 scores.append(score_avg)
 
                 episodes.append(e)
