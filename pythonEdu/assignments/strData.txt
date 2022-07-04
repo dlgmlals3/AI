@@ -1,0 +1,1 @@
+strData = ['good item', 'hello word', 'python programming', 'real data', 'script python']
